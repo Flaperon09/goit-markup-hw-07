@@ -93,20 +93,22 @@ li > p
 
 /* Нижняя линия в хедере */
 .header {
-    border-bottom: 1px solid #ececec;
-}
-
-.main-section .container {
-    width: 698px;
+    border-bottom: 1px solid var(--line);
 }
 
 /* Стиль для сброса подчёркивания ссылок */
-.none-decor {
+/* .none-decor {
     text-decoration: none;
+} */
+
+/* Стилизация контейнера для хедера */
+.header .container {
+    display: flex;
+    align-items: center;
 }
 
 /* Стилизация логотипа */
-.logo {
+.header__logo {
     color: var(--color-logo);
 
     text-decoration: none;
@@ -119,25 +121,26 @@ li > p
     margin-right: 93px;
 }
 
-.logo-accent {
+.header__logo__start,
+.footer__logo__start {
     color: var(--color-accent);
 }
 
-.logo.logo-accent,
-.logo.logo-footer {
+/* .logo.header__logo,
+.logo.logo__studio {
     margin-right: 0;
-}
+} */
 
 /* Стилизация навигации по сайту */
-.site-nav {
+.nav__element {
     display: flex;
 }
 /* Правый отступ для меню, кроме крайнего пункта */
-.site-nav .item:not(:last-child) {
+.nav__element .nav__item:not(:last-child) {
     margin-right: 50px;
 }
 
-.site-nav a {
+.nav__element a {
     display: block;
 
     color: var(--color-header);
@@ -155,9 +158,9 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.site-nav a:hover,
-.site-nav a:focus,
-.site-nav a.current {
+.nav__element a:hover,
+.nav__element a:focus,
+.nav__element a.nav__current {
     color: var(--color-accent);
 
     font-weight: 500;
@@ -165,11 +168,11 @@ li > p
     letter-spacing: 0.28px;
 }
 
-.item {
+.nav__item {
     position: relative;
 }
 
-.current::after {
+.nav__current::after {
     display: block;
     position: absolute;
     bottom: 0;
@@ -178,23 +181,23 @@ li > p
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: #2196F3;
+    background: var(--color-accent);
 }
 
 /* Стилизация контактов */
-.contacts {
+.nav__contacts {
     display: flex;
     margin-left: auto;
     align-items: center;
 }
 
 /* Правый отступ для ссылок, кроме крайнего */
-.contacts .item:not(:last-child) {
+.nav__contacts .nav__item:not(:last-child) {
     margin-right: 50px;
 }
 
-.contacts-link,
-.header-flex {
+.nav__link,
+.nav {
     display: flex;
     align-items: center;
 
@@ -210,24 +213,24 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.contacts-link:hover,
-.contacts-link:focus {
+.nav__link:hover,
+.nav__link:focus {
     color: var(--color-accent);
 }
 
-.envelope:hover,
-.envelope:focus,
-.contacts-link:hover .envelope,
-.contacts-link:focus .envelope,
-.number:hover,
-.number:focus,
-.contacts-link:hover .number,
-.contacts-link:focus .number {
+.nav__email:hover,
+.nav__email:focus,
+.nav__link:hover .nav__email,
+.nav__link:focus .nav__email,
+.nav__number:hover,
+.nav__number:focus,
+.nav__link:hover .nav__number,
+.nav__link:focus .nav__number {
     fill: var(--color-accent);
 }
 
-.envelope,
-.number {
+.nav__email,
+.nav__number {
     display: inline-flex;
     margin-right: 10px;
     fill: var(--color);
@@ -240,7 +243,7 @@ li > p
 
 
 /* Стилизация главной секции */
-.main-section {
+.main__section {
     color: var(--color-white);
     background-color: var(--bkg-header);
     text-align: center;
@@ -261,8 +264,13 @@ li > p
     background-repeat: no-repeat;
 }
 
+/* Стилизация контейнера главной секции */
+.main__section .container {
+    width: 698px;
+}
+
 /* Стилизация заголовка главной секции */
-.main-header {
+.main__header {
     font-size: 44px;
     font-weight: 900;
     line-height: 1.36;
@@ -273,7 +281,7 @@ li > p
 }
 
 /* Стиль для кнопки в первой секции */
-.button {
+.main__button {
     display: inline-block;
 
     color: var(--color-white);
@@ -291,7 +299,7 @@ li > p
     min-width: 216px;
 }
 
-.button:active {
+.main__button:active {
     color: var(--color-accent);
     background-color: var(--color-white);
 }
@@ -341,7 +349,7 @@ li > p
 }
 
 /* Стилизация кнопки закрытия модального окна */
-.button-close {
+.modal__close {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -354,7 +362,7 @@ li > p
     margin: 0;
 }
 
-.icon-close {
+.icon__close {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -366,14 +374,14 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.icon-close:hover,
-.button-close:focus .icon-close {
+.icon__close:hover,
+.modal__close:focus .icon__close {
     fill: var(--color-accent);
 }
 
 /* Стилизация формы модального окна */
-.head-modal {
-    color: #212121;
+.modal__head {
+    color: var(--color-header);
     text-align: center;
     font-size: 20px;
     font-weight: 700;
@@ -389,14 +397,14 @@ li > p
     padding: 0;
 }
 
-.form-field {
+.form__field {
     position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
 
-.form-field input {
+.form__field input {
     width: 448px;
     height: 40px;
     padding: 12px 12px 12px 42px;
@@ -407,7 +415,7 @@ li > p
     font-size: 16px;
 }
 
-.form-field textarea {
+.form__field textarea {
     width: 448px;
     height: 120px;
     padding: 12px 16px;
@@ -418,10 +426,10 @@ li > p
     transition-property: border-color;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    
+
 }
 
-.form-field textarea::placeholder {
+.form__field textarea::placeholder {
     color: var(--color-placeholder);
     font-size: 12px;
     font-weight: 400;
@@ -429,7 +437,7 @@ li > p
     letter-spacing: 0.12px;
 }
 
-.form-field label {
+.form__field label {
     color: var(--color);
     font-size: 12px;
     font-style: normal;
@@ -440,7 +448,7 @@ li > p
     margin-bottom: 4px;
 }
 
-.form-input {
+.form__input {
     display: flex;
     align-items: center;
 
@@ -449,7 +457,7 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-checkbox {
+.form__checkbox {
     display: flex;
     align-items: center;
     margin-left: 12px;
@@ -457,11 +465,11 @@ li > p
 
 }
 
-.checkbox-text {
+.checkbox__text {
     margin: 0 0 0 7px;
 }
 
-.icon-input {
+.form__icon {
     position: absolute;
     bottom: 11px;
     left: 12px;
@@ -475,12 +483,12 @@ li > p
         
 }
 
-.form-field:focus-within .form-input {
+.form__field:focus-within .form__input {
     border-color: var(--color-accent);
     outline: none;
 }
 
-.form-field:focus-within > .icon-input {
+.form__field:focus-within > .form__icon {
     fill: var(--color-accent);
 }
 
@@ -498,7 +506,7 @@ li > p
     overflow: hidden;
 }
 
-.checkbox-icon {
+.checkbox__icon {
     display: flex;
     width: 16px;
     height: 15px;
@@ -512,22 +520,22 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.checkbox:focus + .checkbox-icon {
+.checkbox:focus + .checkbox__icon {
     border-color: var(--color-accent);
 }
 
-.checkbox:checked + .checkbox-icon {
+.checkbox:checked + .checkbox__icon {
     background-color: var(--color-accent);
     border-color: var(--color-accent);
     background-size: contain;
     background-origin: border-box;
 }
 
-.link-contract {
+.checkbox__link {
     color: var(--color-accent);
 }
 
-.submit {
+.form__send {
     display: block;
     width: 200px;
     height: 50px;
@@ -551,13 +559,13 @@ li > p
     letter-spacing: 0.96px;
 }
 
-.submit:active {
+.form__send:active {
     background: var(--color-white);
     color: var(--color-submit);
 }
 
 /* Стилизация секций */
-.visually-hidden {
+.visually__hidden {
     position: fixed;
     transform: scale(0);
 }
@@ -569,23 +577,23 @@ li > p
     padding-bottom: 0px;
 }
 
-.advantages-flex {
+.advantages__block {
     display: flex;
     justify-items: space-between;
 }
 
-.item-adv {
+.advantages__item {
     width: 270px;
     margin-right: 30px;
     justify-content: space-between;
 }
 
-.item-adv:last-child {
+.advantages__item:last-child {
     margin-right: 0;
 }
 
 /* Добавление иконок к списку - начало */
-/* .item-adv::before {
+/* .advantages__item::before {
     display: block;
     content: "";
     height: 120px;
@@ -597,34 +605,34 @@ li > p
     background-position: center;
 }
 
-.icon-attention::before {
+.icon__attention::before {
     background-image: url(../images/antenna.svg);
 }
 
-.icon-punctuality::before {
+.icon__punctuality::before {
     background-image: url(../images/clock.svg);
 }
 
-.icon-plan::before {
+.icon__plan::before {
     background-image: url(../images/diagram.svg);
 }
 
-.icon-tech::before {
+.icon__tech::before {
     background-image: url(../images/astronaut.svg);
 } */
 
 /* Вариант проставления разных иконок
-.item-adv:nth-child(1)::before {
+.advantages__item:nth-child(1)::before {
     background-image: url();
 }
 
-.item-adv:nth-child(2)::before {
+.advantages__item:nth-child(2)::before {
     background-image: url();
 } */
 
 /* Добавление иконок к списку - конец */
 
-.bg-adv {
+.advantages__background {
     display: flex;
     width: 270px;
     height: 120px;
@@ -634,33 +642,46 @@ li > p
     justify-content: center;    
 }
 
-.icon-attention,
-.icon-punctuality,
-.icon-plan,
-.icon-tech {    
+.icon__attention,
+.icon__punctuality,
+.icon__plan,
+.icon__tech {    
     fill: var(--color-header);
 }
 
-.work,
-.clients {
-    background-color: var(--bkg-color);
-    padding-top: 94px;
-    padding-bottom: 94px;
-}
-
-.h3-advantages {
+.advantages__h3 {
     font-weight: 700;
     font-size: 14px;
     line-height: 1.2;
     text-transform: uppercase;
 }
 
-.overlay {
+/* Стилизация секции work */
+.work__img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img__element {
+    width: 370px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.img__element:nth-child(3n) {
+    margin-right: 0;
+}
+
+.img__element:nth-last-child(-n + 3) {
+    margin-bottom: 0;
+}
+
+.img__overlay {
     position: relative;
     
 }
 
-.overlay-element {
+.img__text {
     position: absolute;
     bottom: 0;
 
@@ -671,7 +692,7 @@ li > p
     align-items: center;
 }
 
-.h3-work {
+.work__h3 {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -690,12 +711,13 @@ li > p
     margin: 0;
 }
 
-.flex-hight {
+/* .flex-hight {
     height: 294px;
-}
+} */
 
-.h2-work,
-.h2-team {
+.work__h2,
+.team__h2,
+.clients__h2 {
     text-align: center;
     font-size: 36px;
     font-weight: 700;
@@ -705,39 +727,47 @@ li > p
     margin-bottom: 50px;
 }
 
+.work,
+.clients {
+    background-color: var(--bkg-color);
+    padding-top: 94px;
+    padding-bottom: 94px;
+}
+
+/* Cтилизация секции team */
 .team {
     background-color: var(--bkg-aux);
     padding-top: 94px;
     padding-bottom: 94px;
 }
 
-.h3-team {    
+.team__name {    
     font-size: 16px;
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.48px;
 }
 
-.team-label {
+.team__label {
     padding-top: 30px;
     padding-bottom: 30px;
 }
 
-.flex-team {
+.team__members {
     display: flex;
     text-align: center;
 }
 
-.team-element {
+.team__element {
     width: 270px;
     margin-right: 30px;
 }
 
-.team-element:last-child {
+.team__element:last-child {
     margin-right: 0;
 }
 
-.label {
+.team__position {
     font-size: 16px;
     letter-spacing: 0.48px;
     line-height: normal;
@@ -745,7 +775,7 @@ li > p
     margin-bottom: 16px;
 }
 
-.card {
+.team__card {
     width: 270px;
     height: 428px;
 
@@ -757,8 +787,10 @@ li > p
                 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
-.social-card {
+/* Стилизация иконок соцсетей */
+.social__card {
     display: flex;
+
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
@@ -767,21 +799,21 @@ li > p
 
 }
 
-.social-element {
+.social__element {
     display: flex;
     
     align-items: center;
     justify-content: center;
 }
 
-.social-link:hover,
-.social-link:focus {
+.social__link:hover,
+.social__link:focus {
     background-color: var(--color-accent);
     border-radius: 50%;
     
 }
 
-.social-link {
+.social__link {
     display: flex;
 
     width: 44px;
@@ -797,7 +829,7 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.social-item {
+.social__item {
     display: flex;
     fill: var(--color-border-logo);
 
@@ -806,13 +838,13 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.social-link:hover .social-item,
-.social-link:focus .social-item {
+.social__link:hover .social__item,
+.social__link:focus .social__item {
     fill: var(--color-white);
 }
 
 /* Стиль секции клиентов */
-.clients-link {
+.clients__link {
     display: flex;
 
     width: 170px;
@@ -827,7 +859,7 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.boxes-item {
+.clients__item {
     fill: var(--color-border-logo);
 
     transition-property: fill;
@@ -835,32 +867,42 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.clients-link:hover,
-.clients-link:focus {
+.clients__link:hover,
+.clients__link:focus {
     border: 1px solid var(--color-accent);
 }
 
-.clients-link:hover .boxes-item,
-.clients-link:focus .boxes-item {
+.clients__link:hover .clients__item,
+.clients__link:focus .clients__item {
     fill: var(--color-accent);
 }
 
-.flex-boxes {
+.clients__catalog {
     display: flex;
     justify-content: center;
     gap: 30px;
 }
 
-/* Стиль футера */
+/* Стилизация футера */
 .footer {
     background-color: var(--bkg-header);
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
-.logo-ft {
+.footer__logo {
     display: block;
     margin-bottom: 20px;
+    color: var(--color-white);
+    
+    text-decoration: none;
+    font-family: Raleway, sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.78px;
+    margin-right: 93px;
 }
 
 .address {
@@ -885,16 +927,11 @@ li > p
     color: var(--color-accent);
 }
 
-.logo-footer {
-    color: var(--color-white);
-}
-
-.footer-social {
- 
+.footer__social {
     margin-left: 70px;
 }
 
-.text-social {
+.footer__text {
     display: flex;
     color: var(--color-white);
     font-weight: 700;
@@ -905,7 +942,7 @@ li > p
     margin-bottom: 20px;
 }
 
-.footer-social .social-link {
+.footer__social .social__link {
 
     width: 44px;
     height: 44px;
@@ -917,34 +954,34 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-social .social-link:hover,
-.footer-social .social-link:focus {
+.footer__social .social__link:hover,
+.footer__social .social__link:focus {
     background-color: var(--color-accent);
 }
 
-.footer-social .social-item {
+.footer__social .social__item {
     fill: var(--color-white);
 }
 
-.footer-module {
+.footer__module {
     display: flex;
     position: relative;
     align-items: baseline;
 }
 
-.footer-adress {
+.footer__contacts {
     width: 231px;
 }
 
-.footer-submit {
+.footer__submit {
     display: block;
     margin-left: 93px;
 }
- .footer-div {
+ .footer__email {
     display: flex;
  }
 
-.footer-input {
+.footer__input {
     width: 358px;
     height: 50px;
 
@@ -964,7 +1001,7 @@ li > p
     margin: 0;
 }
 
-.footer-button {
+.footer__button {
     /* position: absolute;
     top: 48px;
     right: 15px; */
@@ -992,17 +1029,17 @@ li > p
     letter-spacing: 0.96px;
 }
 
-.footer-button:active {
+.footer__button:active {
     background-color: var(--color-white);
     color: var(--color-accent);
 }
 
-.footer-span {
+.button__send {
     display: flex;
     align-items: center;
 }
 
-.footer-send {
+.button__icon {
     margin: 0 0 0 10px;
 }
 
@@ -1012,23 +1049,23 @@ li > p
     padding-bottom: 94px;
 }
 
-.button-portfolio {
+.nav__portfolio {
     display: flex;
 
     margin-bottom: 50px;
     justify-content: center;
 }
 
-.button-flex {
+.nav__button {
     margin-left: 0;
     margin-right: 8px;
 }
 
-.button-flex:last-child {
+.nav__button:last-child {
     margin-right: 0;
 }
 
-.item-button {
+.nav__items {
         color: var(--color-header);
         background-color: var(--bkg-aux);
 
@@ -1057,34 +1094,42 @@ li > p
     padding-right: 25px;
 }
 
-.item-button:hover,
-.item-button:focus {
+.nav__items:hover,
+.nav__items:focus {
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12),
                 0px 1px 2px 0px rgba(0, 0, 0, 0.08), 
                 0px 3px 1px 0px rgba(0, 0, 0, 0.10);
 }
 
-.button-portfolio button:hover,
-.button-portfolio button:focus {
+.nav__portfolio button:hover,
+.nav__portfolio button:focus {
     color: var(--color-white);
     background-color: var(--color-accent);
 }
 
-.button-portfolio button:active {
+.nav__portfolio button:active {
     color: var(--color-accent);
     background-color: var(--color-white);
 }
 
-.portfolio-card {
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+
+    row-gap: 30px;
+    column-gap: 30px;
+}
+
+.projects__card {
     width: 370px;
     height: 404px;
 }
 
-.portfolio-card .portfolio-link {
+.projects__card .projects__link {
     text-decoration: none;
 }
 
-.portfolio-link {
+.projects__link {
     display: block;
     position: relative;
     overflow: hidden;
@@ -1094,25 +1139,25 @@ li > p
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-link:hover,
-.portfolio-link:focus {
+.projects__link:hover,
+.projects__link:focus {
     box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
                 0px 4px 4px 0px rgba(0, 0, 0, 0.06),
                 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
     
 }
 
-.portfolio-link:hover .overlay-img,
-.portfolio-link:focus .overlay-img {
+.projects__link:hover .projects__text,
+.projects__link:focus .projects__text {
     transform: translateY(0);
 }
 
-.box-img {
+.box__img {
     position: relative;
     overflow: hidden;
 }
 
-.portfolio-img {
+.projects__img {
     position: absolute;
 
     top: 0;
@@ -1122,7 +1167,7 @@ li > p
 
 }
 
-.overlay-img {
+.projects__text {
     top: 0;
     left: 0;
     width: 370px;
@@ -1143,7 +1188,7 @@ li > p
     
 }
 
-.h2-portfolio {
+.projects__h2 {
     color: var(--color-header);
     
     font-size: 18px;
@@ -1154,7 +1199,7 @@ li > p
     margin-bottom: 4px;
 }
 
-.chapter {
+.projects__chapter {
     color: var(--color);
     
     font-size: 16px;
@@ -1164,27 +1209,7 @@ li > p
     margin: 0;
 }
 
-.item-flex {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.flex-element {
-
-    width: 370px;
-    margin-right: 30px;
-    margin-bottom: 30px;
-}
-
-.flex-element:nth-child(3n) {
-    margin-right: 0;
-}
-
-.flex-element:nth-last-child(-n + 3) {
-    margin-bottom: 0;
-}
-
-.portfolio-label {
+.projects__label {
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 24px;
@@ -1194,4 +1219,3 @@ li > p
     border-left: 1px solid var(--color-border);
     border-right: 1px solid var(--color-border);
 }
-

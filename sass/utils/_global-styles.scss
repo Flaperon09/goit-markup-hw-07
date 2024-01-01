@@ -1,0 +1,41 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+// Общая стилизация заголовков
+h2,
+h3 {
+    color: $color-header;
+    background-color: transparent;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+// Стили картинок
+img {
+    display: block;
+}
+
+// Стили контейнера
+.container {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+// Стиль для сброса настроек
+.list,
+li>p {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+}
