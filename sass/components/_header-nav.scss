@@ -20,7 +20,7 @@
     a {
         display: block;
             
-        color: var(--color-header);
+        color: $color-header;
         text-decoration: none;
             
         font-weight: 500;
@@ -51,7 +51,6 @@
 
 .nav__item {
     position: relative;
-    color: $color-header;
 }
 
 // Стилизация линии подчеркивания активного пункта меню

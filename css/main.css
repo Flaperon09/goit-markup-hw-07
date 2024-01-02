@@ -104,7 +104,7 @@ li > p {
 }
 .nav__element a {
   display: block;
-  color: var(--color-header);
+  color: #212121;
   text-decoration: none;
   font-weight: 500;
   line-height: 1.2;
@@ -130,7 +130,6 @@ li > p {
 
 .nav__item {
   position: relative;
-  color: #212121;
 }
 
 .nav__current::after {
