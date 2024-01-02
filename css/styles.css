@@ -170,6 +170,7 @@ li > p
 
 .nav__item {
     position: relative;
+    color: var(--color-header);
 }
 
 .nav__current::after {
@@ -700,7 +701,6 @@ li > p
     
     color: var(--color-white);
     text-align: center;
-    font-family: Roboto;
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
